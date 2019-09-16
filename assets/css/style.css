@@ -1,0 +1,21 @@
+body {
+    background-image: url(../images/mc2.jpg);
+    background-size: 100%;
+}
+
+.title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 80px;
+    color: #454545;
+    text-align: center;
+    margin: 100px;
+}
+
+.container {
+    font-family: 'Courier New', Courier, monospace;
+    color: #F1F1F1;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 25%;
+}
+
