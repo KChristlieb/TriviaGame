@@ -19,3 +19,14 @@ body {
     margin-left: 25%;
 }
 
+#intro, #message, #question, #reveal, #choices, #finalMessage, #correct, #wrong, #noAnswer, .reset {
+    font-size: 30px;
+}
+
+#choices {
+    margin-bottom: 5px;
+}
+
+.thisChoice:hover, .reset:hover {
+    color: green;
+}
