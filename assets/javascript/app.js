@@ -63,6 +63,18 @@ $(document).ready(function(){
             choices: ["4", "2", "1", "3"], 
             correct: 2,
         },
-    ]
+    ];
 
-})
+    // array to call images after each question
+    var imgArray = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10",];
+
+    var message = {
+        correct: "Good job! You know your blocks",
+        incorrect: "Sorry, that was the wrong answer",
+        timesUp: "Sorry, I guess 30 Seconds was not long enough for you.",
+        over: "That's all the questions, now let see if you found some diamonds!"
+    }
+
+    
+
+});
