@@ -97,7 +97,7 @@ $(document).ready(function () {
         timeLeft = 30;
         $("#message").empty();
         $("#answer").empty();
-        $("image").empty();
+        $("#image").empty();
         runTimer();
 
         $("#question").html("<h2>" + questionsArray[currentQuestionIndex].question + "</h2>");
