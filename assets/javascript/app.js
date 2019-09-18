@@ -5,7 +5,7 @@ $(document).ready(function () {
     var timeLeft = 15;
     var intervalId;
     var userSelection;
-    var answered;
+    // var answered;
     var correctAnswer = 0;
     var incorrectAnswer = 0;
     var currentQuestionIndex = 0;
@@ -66,7 +66,7 @@ $(document).ready(function () {
     ];
 
     // array to call images after each question
-    var imgArray = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10",];
+    var imageArray = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10",];
 
     var message = {
         correct: "Good job! You know your blocks",
@@ -75,7 +75,7 @@ $(document).ready(function () {
         over: "That's all the questions, now let see if you found some diamonds!"
     }
 
-    $("#startBtn").on(click, function () {
+    $("#startBtn").on("click", function () {
         $(this).hide();
         $("#intro").hide();
         newGame();
@@ -100,11 +100,11 @@ $(document).ready(function () {
         $("image").empty();
         runTimer();
 
-        $("#question").html("<h2>" + questionArray[currentQuestionIndex].question + "</h2>");
+        $("#question").html("<h2>" + questionsArray[currentQuestionIndex].question + "</h2>");
 
         for (var i = 0; i < 4; i++) {
             var choiceList = $("<div>");
-            choiceList.text(questionArray[currentQuestionIndex].choices[i]);
+            choiceList.text(questionsArray[currentQuestionIndex].choices[i]);
             choiceList.attr("data-index", i);
             choiceList.addClass("thisChoice");
             $("#choices").append(choiceList);
@@ -138,3 +138,52 @@ $(document).ready(function () {
             answerPage();
         }
     }
+
+    function answerPage() {
+        $("#timer").empty();
+        $("#question").empty();
+        $(".thisChoice").empty();
+
+        var rightAnswerText = questionsArray[currentQuestionIndex].choices[questionsArray[currentQuestionIndex].correct];
+        var rightAnswerIndex = questionsArray[currentQuestionIndex].correct;
+        $("#image").html('<img src = "assets/images/' + imageArray[currentQuestionIndex] + '.gif" width = "600px">');
+
+        //checks to see if answer was correct/incorrect or if unanswered
+        if ((userSelection === rightAnswerIndex) && (answered = true)) {
+            correctAnswer++;
+            $("#message").html(message.correct);
+        }
+        else if ((userSelection !== rightAnswerIndex) && (answered = true)) {
+            incorrectAnswer++;
+            $("#message").html(message.incorrect);
+            $("#answer").html("The correct answer was " + rightAnswerText);
+        }
+
+        if (currentQuestionIndex == (questionsArray.length-1)){
+            setTimeout(endOfGame, 3000)
+        } 
+        else {
+            currentQuestionIndex++;
+            setTimeout(newQuestion, 3000);
+        }	
+    }
+
+    $("#replayGameBtn").on("click", function(){
+        $(this).hide();
+        newGame();
+    });
+
+    function endOfGame(){
+        $("#timeLeft").empty();
+        $("#message").empty();
+        $("#answer").empty();
+        $("#image").empty();
+        $("#finalMessage").html(message.done);
+        $("#correct").html("Correct Answers: " + correctAnswer);
+        $("#wrong").html("Incorrect Answers: " + incorrectAnswer);
+        $("#replayGameBtn").addClass("reset");
+        $("#replayGameBtn").show();
+        $("#replayGameBtn").html("Start Over?");
+    }
+
+});
