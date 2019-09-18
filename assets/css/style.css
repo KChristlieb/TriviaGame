@@ -13,10 +13,11 @@ body {
 
 .container {
     font-family: 'Courier New', Courier, monospace;
-    color: #F1F1F1;
+    color: #454545;
     text-align: center;
     margin: 0 auto;
     margin-left: 25%;
+    background-color: greenyellow;
 }
 
 #intro, #message, #question, #reveal, #choices, #finalMessage, #correct, #wrong, #noAnswer, .reset {
@@ -28,5 +29,5 @@ body {
 }
 
 .thisChoice:hover, .reset:hover {
-    color: green;
+    color: white;
 }
